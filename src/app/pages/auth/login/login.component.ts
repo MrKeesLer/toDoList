@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FormBuilder } from '@angular/forms';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor() { }
+  loginForm = this.fb.group({
+    username: [''],
+    password: ['']
+  });
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private auth: AuthService) { }
+
+  onSubmit(){
+    this.auth.login(this.getUsername()?.value,this.getPassword()?.value);
   }
 
+  getUsername(){
+    return this.loginForm.get('username');
+  }
+
+  getPassword(){
+    return this.loginForm.get('password');
+  }
 }
