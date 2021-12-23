@@ -1,0 +1,11 @@
+<mat-toolbar>
+    <span>ToDo List</span>
+    <span class="example-spacer"></span>
+    <div *ngIf="!isAuth">
+        <a [routerLink]="'/login'">Connexion</a>
+        <a [routerLink]="'/register'">Creer un compte</a>
+    </div>
+    <div *ngIf="isAuth">
+        <button (click)="logout()" >Deconnexion</button>
+    </div>
+</mat-toolbar>

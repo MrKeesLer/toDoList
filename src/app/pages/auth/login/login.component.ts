@@ -18,7 +18,11 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, private auth: AuthService) { }
 
   onSubmit(){
-    this.auth.login(this.getUsername()?.value,this.getPassword()?.value);
+    this.auth.login(this.getUsername()?.value,this.getPassword()?.value).then(() =>
+      console.log('t co pd')
+    ).catch((error) =>
+      console.log(error.message)
+    );
   }
 
   getUsername(){

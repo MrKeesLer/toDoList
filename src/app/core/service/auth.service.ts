@@ -1,46 +1,38 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  authState: any = null;
-
   constructor(public auth: AngularFireAuth) { 
-    this.auth.authState.subscribe(authState => {this.authState = authState});
   }
 
-  login(email: string,password: string){
-    this.auth.signInWithEmailAndPassword(email,password)
-    .then(res => {
-      console.log('Successfully logged in', res);
-    })
-    .catch(error => {
-      console.log('Somethimg went wrong', error.message);
-    });
+  public login(email: string,password: string): Promise<firebase.default.auth.UserCredential>{
+    return this.auth.signInWithEmailAndPassword(email,password);
   }
 
-  register(email: string, password: string){
-    this.auth.createUserWithEmailAndPassword(email,password)
-    .then(res => {
-      console.log('Successfully signed up!', res);
-    })
-    .catch(error => {
-      console.log('Something is wrong:', error.message);
-    });   ;
+  public register(email: string, password: string): Promise<firebase.default.auth.UserCredential>{
+    return this.auth.createUserWithEmailAndPassword(email,password);
   }
 
-  logout(){
+  public logout(): Promise<void>{   
     return this.auth.signOut();
   }
 
-  public get isAuth(): boolean {
-    return this.authState != null;
+  public get isAuth$(): Observable<boolean> {
+    return this.auth.authState.pipe(
+      map((authState) => authState!==null)
+    );
   }
 
-  public get currentUserId(): string {
-    return this.isAuth ? this.authState.uId : null;
+  public get currentUserId$(): Observable<string | undefined> {
+    return this.auth.authState.pipe(
+      map((authState) => authState?.uid)
+    )
   }
 }
