@@ -6,7 +6,10 @@ import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { TasksComponent } from './tasks/tasks.component';
+import { TaskBracketComponent } from './tasks/task-bracket/task-bracket.component'
 
 
 
@@ -14,7 +17,9 @@ import { MatIconModule } from '@angular/material/icon'
   declarations: [
     LoginComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    TasksComponent,
+    TaskBracketComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +27,8 @@ import { MatIconModule } from '@angular/material/icon'
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   exports: [
     RoutingModule,
