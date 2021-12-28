@@ -8,8 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { DragDropModule } from '@angular/cdk/drag-drop'; 
 import { TasksComponent } from './tasks/tasks.component';
-import { TaskBracketComponent } from './tasks/task-bracket/task-bracket.component'
 
 
 
@@ -19,7 +19,6 @@ import { TaskBracketComponent } from './tasks/task-bracket/task-bracket.componen
     RegisterComponent,
     NavbarComponent,
     TasksComponent,
-    TaskBracketComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +27,8 @@ import { TaskBracketComponent } from './tasks/task-bracket/task-bracket.componen
     ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    DragDropModule
   ],
   exports: [
     RoutingModule,
