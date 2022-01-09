@@ -30,9 +30,9 @@ export class AuthService {
     );
   }
 
-  public get currentUserId$(): Observable<string | undefined> {
+  public get currentUserId$(): Observable<string> {
     return this.auth.authState.pipe(
-      map((authState) => authState?.uid)
-    )
+      map((authState) => authState?.uid ?? '' )
+    );
   }
 }

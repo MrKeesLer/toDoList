@@ -8,8 +8,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { DragDropModule } from '@angular/cdk/drag-drop'; 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog'; 
 import { TasksComponent } from './tasks/tasks.component';
+import { AddTaskDialogComponent } from './tasks/add-task-dialog/add-task-dialog.component';
 
 
 
@@ -19,6 +21,7 @@ import { TasksComponent } from './tasks/tasks.component';
     RegisterComponent,
     NavbarComponent,
     TasksComponent,
+    AddTaskDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { TasksComponent } from './tasks/tasks.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ],
   exports: [
     RoutingModule,

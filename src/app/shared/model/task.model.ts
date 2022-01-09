@@ -1,14 +1,11 @@
-export class Task {
+export interface Task {
 
-    public title: string;
-    public desc: string;
-    public status: TaskStatus;
+    id?: string;
+    title: string;
+    desc: string;
+    status: TaskStatus;
+    authorId: string;
 
-    constructor(t: string, d: string, s: TaskStatus){
-        this.title = t;
-        this.desc = d;
-        this.status = s;
-    }
 }
 
 export enum TaskStatus {TODO,DOING,DONE}

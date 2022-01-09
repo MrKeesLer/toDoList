@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/core/service/auth.service';
 })
 export class LoginComponent {
 
-  loginForm = this.fb.group({
+  public loginForm = this.fb.group({
     username: [''],
     password: ['']
   });
